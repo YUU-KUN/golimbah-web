@@ -16,8 +16,6 @@ import GameplayView from '../views/GameplayView.vue'
 import GeneratedSessionCode from '../views/GeneratedSessionCode.vue'
 import GameplayAdmin from '../views/GameplayAdmin.vue'
 
-var is_logged_in = store.getters.isLoggedIn
-
 const routes = [
   {
     path: '/gameplay-admin/:game_session_id',
@@ -110,7 +108,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!is_logged_in) {
+    if (!store.getters.isLoggedIn) {
       next({
         name: 'welcome',
       })

@@ -77,8 +77,8 @@ const store = createStore({
                         commit('userDetail', response.data.data.user)
                         commit('set_token', token)
                         axios.defaults.headers.common['Authorization'] = token
-                        router.push({ name: 'home' })
                         commit('auth_success', token)
+                        router.push({ name: 'home' })
                     }
                     resolve(response)
                 }).catch(err => {
